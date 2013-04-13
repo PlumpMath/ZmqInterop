@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZmqInterop", "ZmqInterop\ZmqInterop.csproj", "{EE29BE90-C981-454F-BF84-47151B0F118B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZeroMQ-3.2.2", "ZeroMQ-3.2.2", "{676451AC-934F-4FDB-B0C1-0351BACA5B50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64", "x64", "{8576CEFE-AF6D-4409-ACF7-9B353E4541BE}"
+	ProjectSection(SolutionItems) = preProject
+		ZeroMQ-3.2.2\x64\libzmq.dll = ZeroMQ-3.2.2\x64\libzmq.dll
+		ZeroMQ-3.2.2\x64\libzmq.pdb = ZeroMQ-3.2.2\x64\libzmq.pdb
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86", "x86", "{60E67DE3-F640-4705-BD61-0A19C42834E7}"
+	ProjectSection(SolutionItems) = preProject
+		ZeroMQ-3.2.2\x86\libzmq.dll = ZeroMQ-3.2.2\x86\libzmq.dll
+		ZeroMQ-3.2.2\x86\libzmq.pdb = ZeroMQ-3.2.2\x86\libzmq.pdb
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE29BE90-C981-454F-BF84-47151B0F118B}.Debug|x64.ActiveCfg = Debug|x64
+		{EE29BE90-C981-454F-BF84-47151B0F118B}.Debug|x64.Build.0 = Debug|x64
+		{EE29BE90-C981-454F-BF84-47151B0F118B}.Debug|x86.ActiveCfg = Debug|x86
+		{EE29BE90-C981-454F-BF84-47151B0F118B}.Debug|x86.Build.0 = Debug|x86
+		{EE29BE90-C981-454F-BF84-47151B0F118B}.Release|x64.ActiveCfg = Release|x64
+		{EE29BE90-C981-454F-BF84-47151B0F118B}.Release|x64.Build.0 = Release|x64
+		{EE29BE90-C981-454F-BF84-47151B0F118B}.Release|x86.ActiveCfg = Release|x86
+		{EE29BE90-C981-454F-BF84-47151B0F118B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8576CEFE-AF6D-4409-ACF7-9B353E4541BE} = {676451AC-934F-4FDB-B0C1-0351BACA5B50}
+		{60E67DE3-F640-4705-BD61-0A19C42834E7} = {676451AC-934F-4FDB-B0C1-0351BACA5B50}
+	EndGlobalSection
+EndGlobal
