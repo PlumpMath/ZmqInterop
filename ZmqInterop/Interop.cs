@@ -86,10 +86,10 @@ namespace ZeroMQ
 		public static readonly Int32 EINPROGRESS =
 			Environment.OSVersion.Platform == PlatformID.Unix ? 115 :
 			ZMQ_HAUSNUMERO + 8;
-		 
+
 		/// <summary>"Socket operation on non-socket"</summary>
 		public static readonly Int32 ENOTSOCK =
-			Environment.OSVersion.Platform == PlatformID.Unix ? 88 : 
+			Environment.OSVersion.Platform == PlatformID.Unix ? 88 :
 			Environment.OSVersion.Platform == PlatformID.Win32NT ? 108 :
 			ZMQ_HAUSNUMERO + 9;
 
@@ -273,15 +273,15 @@ namespace ZeroMQ
 		/// transport and does not implement functionality such as auto-reconnection</remarks>
 		public static readonly Int32 ZMQ_PAIR = 0;
 
-		/// <summary>Publisher socket, used for one-to-many distribution of data from a single
-		/// Publisher to multiple Subscribers or Extended Subscribers in a fan out fashion to all
+		/// <summary>Publish socket, used for one-to-many distribution of data from a single
+		/// publisher to multiple Subscribe or Extended Subscribe sockets in a fan out fashion to all
 		/// connected peers</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_SUB" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_XSUB" />
 		public static readonly Int32 ZMQ_PUB = 1;
 
-		/// <summary>Subscriber socket, used to subscribe to data distributed by a Publisher or
-		/// an Extended Publisher socket</summary>
+		/// <summary>Subscribe socket, used to subscribe to data distributed by a publisher or
+		/// an Extended Publish socket</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_PUB" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_XPUB" />
 		public static readonly Int32 ZMQ_SUB = 2;
@@ -322,16 +322,16 @@ namespace ZeroMQ
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_PULL" />
 		public static readonly Int32 ZMQ_PUSH = 8;
 
-		/// <summary>Extended Publisher socket, used like a regular Publisher socket, except raw SUBSCRIBE and
+		/// <summary>Extended Publish socket, used like a regular Publish socket, except raw SUBSCRIBE and
 		/// UNSUBSCRIBE messages can also be read from the socket, optionally allowing them to be forwarded
-		/// along to other [Extended] Subscribers</summary>
+		/// along to other [Extended] Subscribe sockets</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_SUB" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_XSUB" />
 		public static readonly Int32 ZMQ_XPUB = 9;
 
-		/// <summary>Extended Subscriber socket, used like a regular Subscriber socket, except raw SUBSCRIBE and
+		/// <summary>Extended Subscribe socket, used like a regular Subscribe socket, except raw SUBSCRIBE and
 		/// UNSUBSCRIBE messages can also be sent to the socket, optionally allowing them to be forwarded
-		/// along to other [Extended] Publishers</summary>
+		/// along to other [Extended] Publish sockets</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_PUB" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_XPUB" />
 		public static readonly Int32 ZMQ_XSUB = 10;
@@ -433,7 +433,7 @@ namespace ZeroMQ
 
 		/// <summary>Provide all subscription messages on XPUB sockets (set)</summary>
 		public static readonly Int32 ZMQ_XPUB_VERBOSE = 40;
-		
+
 		/*  Message options  */
 
 		/// <summary>Specifies that a message is a multi-part message</summary>

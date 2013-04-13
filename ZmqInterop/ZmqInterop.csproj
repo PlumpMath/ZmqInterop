@@ -11,6 +11,7 @@
     <AssemblyName>ZmqInterop</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -61,12 +62,37 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net40\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net40\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net40\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net40\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZmqDealerSocket.cs" />
+    <Compile Include="ZmqExtendedPublishSocket.cs" />
+    <Compile Include="ZmqExtendedSubscribeSocket.cs" />
+    <Compile Include="ZmqPairSocket.cs" />
+    <Compile Include="ZmqPublishSocket.cs" />
+    <Compile Include="ZmqPullSocket.cs" />
+    <Compile Include="ZmqPushSocket.cs" />
+    <Compile Include="ZmqReplySocket.cs" />
+    <Compile Include="ZmqRequestSocket.cs" />
+    <Compile Include="ZmqRouterSocket.cs" />
+    <Compile Include="ZmqSocket.cs" />
+    <Compile Include="ZmqSubscribeSocket.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="ZmqInterop.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
