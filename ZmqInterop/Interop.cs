@@ -165,7 +165,8 @@ namespace ZeroMQ
 
 		/// <summary>Retrieve the error message for a given "errno" integer</summary>
 		[DllImport( "libzmq" )]
-		public static extern IntPtr zmq_strerror( Int32 errnum );
+		[return: MarshalAs( UnmanagedType.LPStr )]
+		public static extern String zmq_strerror( Int32 errnum );
 
 		/******************************************************************************/
 		/*  0MQ infrastructure (a.k.a. context) initialisation & termination.         */
