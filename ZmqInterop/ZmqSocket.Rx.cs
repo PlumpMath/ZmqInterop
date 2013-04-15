@@ -4,14 +4,14 @@
 	using System.Collections.Concurrent;
 	using System.Collections.Generic;
 
-	public abstract partial class ZmqSocket: IObservable<Byte[]>
+	public abstract partial class ZmqSocket: IObservable<IEnumerable<Byte[]>>
 	{
-		protected readonly ConcurrentDictionary<Byte[], IObserver<Byte[]>> Subscribers
-			= new ConcurrentDictionary<Byte[], IObserver<Byte[]>>();
+		protected readonly ConcurrentDictionary<Byte[], IObserver<IEnumerable<Byte[]>>> Subscribers
+			= new ConcurrentDictionary<Byte[], IObserver<IEnumerable<Byte[]>>>();
 
 		/// <summary></summary>
 		/// <returns></returns>
-		public IDisposable Subscribe( IObserver<Byte[]> observer )
+		public IDisposable Subscribe( IObserver<IEnumerable<Byte[]>> observer )
 		{
 			Byte[] id;
 
@@ -24,7 +24,7 @@
 			return new Unsubscriber( id, this );
 		}
 
-		private class Unsubscriber : IDisposable
+		protected class Unsubscriber : IDisposable
 		{
 			private readonly Byte[] ID;
 
@@ -40,8 +40,10 @@
 
 			public void Dispose()
 			{
-				IObserver<Byte[]> unused;
+				if( this.IsUnsubscribed ) return;
+				IObserver<IEnumerable<Byte[]>> unused;
 				this.Socket.Subscribers.TryRemove( this.ID, out unused );
+				this.IsUnsubscribed = true;
 			}
 		}
 	}
