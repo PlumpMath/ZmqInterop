@@ -544,21 +544,13 @@ namespace ZeroMQ
 		[DllImport( "libzmq" )]
 		public static extern Int32 zmq_send( IntPtr socket, IntPtr buf, Int32 len, Int32 flags );
 
-		/// <summary>Receive the next message on a ZeroMQ socket</summary>
+		/// <summary>Receive the contents of the next message on a ZeroMQ socket</summary>
 		[DllImport( "libzmq" )]
 		public static extern Int32 zmq_recv( IntPtr socket, IntPtr buf, Int32 len, Int32 flags );
 
 		/// <summary>Create a virtual Pair socket which sends events about the specified socket to a given "inproc" endpoint</summary>
 		[DllImport( "libzmq", CharSet = CharSet.Ansi )]
 		public static extern Int32 zmq_socket_monitor( IntPtr socket, String addr, Int32 events );
-
-		/// <summary>Send a message on a ZeroMQ socket</summary>
-		[DllImport( "libzmq" )]
-		public static extern Int32 zmq_sendmsg( IntPtr socket, IntPtr msg, Int32 flags );
-
-		/// <summary>Receive the next message on a ZeroMQ socket</summary>
-		[DllImport( "libzmq" )]
-		public static extern Int32 zmq_recvmsg( IntPtr socket, IntPtr msg, Int32 flags );
 
 		/// <summary>Poll a socket for the ability to receive data</summary>
 		public static readonly Int32 ZMQ_POLLIN = 1;
@@ -569,7 +561,7 @@ namespace ZeroMQ
 		/// <summary>Poll a socket for an error condition</summary>
 		public static readonly Int32 ZMQ_POLLERR = 4;
 
-		/// <summary></summary>
+		/// <summary>ZeroMQ poll items structure</summary>
 		[StructLayout( LayoutKind.Sequential )]
 		public struct zmq_pollitem_t
 		{

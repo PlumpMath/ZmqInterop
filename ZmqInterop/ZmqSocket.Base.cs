@@ -1,6 +1,7 @@
 ﻿namespace ZeroMQ
 {
 	using System;
+	using System.Collections.Generic;
 	using System.Runtime.InteropServices;
 
 	/// <summary></summary>
@@ -38,7 +39,7 @@
 			ZmqSocket.Context = IntPtr.Zero;
 		}
 
-		protected static Int32 GetContextOpt( Int32 option )
+		protected static Int32 GetContextOption( Int32 option )
 		{
 			if( ZmqSocket.Context == IntPtr.Zero ) throw new InvalidOperationException( "Context has not been created" );
 
@@ -52,7 +53,7 @@
 			return result;
 		}
 
-		protected static void SetContextOpt( Int32 option, Int32 value )
+		protected static void SetContextOption( Int32 option, Int32 value )
 		{
 			if( ZmqSocket.Context == IntPtr.Zero ) throw new InvalidOperationException( "Context has not been created" );
 
@@ -61,6 +62,8 @@
 				throw new ZmqException( Interop.zmq_errno() );
 			}
 		}
+
+		protected static readonly List<Tuple<ZmqSocket, IntPtr>> Sockets = new List<Tuple<ZmqSocket, IntPtr>>();
 
 		protected IntPtr Socket;
 
@@ -76,6 +79,8 @@
 			{
 				throw new ZmqException( Interop.zmq_errno() );
 			}
+
+			lock( ZmqSocket.Sockets ) ZmqSocket.Sockets.Add( new Tuple<ZmqSocket, IntPtr>( this, this.Socket ) );
 		}
 
 		protected void DestroySocket( IntPtr socket )
@@ -83,6 +88,8 @@
 			if( ZmqSocket.Context == IntPtr.Zero ) throw new InvalidOperationException( "Context has not been created" );
 
 			if( this.Socket == IntPtr.Zero ) throw new InvalidOperationException( "Socket has already been destroyed" );
+
+			lock( ZmqSocket.Sockets ) ZmqSocket.Sockets.Remove( new Tuple<ZmqSocket, IntPtr>( this, this.Socket ) );
 
 			if( Interop.zmq_close( this.Socket ) != 0 )
 			{
@@ -92,7 +99,7 @@
 			this.Socket = IntPtr.Zero;
 		}
 
-		protected Int32 GetIntSocketOpt( Int32 option )
+		protected Int32 GetIntSocketOption( Int32 option )
 		{
 			if( ZmqSocket.Context == IntPtr.Zero ) throw new InvalidOperationException( "Context has not been created" );
 
@@ -115,7 +122,7 @@
 			return result;
 		}
 
-		protected void SetIntSocketOpt( Int32 option, Int32 value )
+		protected void SetIntSocketOption( Int32 option, Int32 value )
 		{
 			if( ZmqSocket.Context == IntPtr.Zero ) throw new InvalidOperationException( "Context has not been created" );
 
@@ -134,7 +141,7 @@
 			Marshal.FreeHGlobal( ptrValue );
 		}
 
-		protected Byte[] GetByteScoketOpt( Int32 option )
+		protected Byte[] GetByteScoketOption( Int32 option )
 		{
 			if( ZmqSocket.Context == IntPtr.Zero ) throw new InvalidOperationException( "Context has not been created" );
 
@@ -179,7 +186,7 @@
 			return result;
 		}
 
-		protected void SetByteSocketOpt( Int32 option, Byte[] value )
+		protected void SetByteSocketOption( Int32 option, Byte[] value )
 		{
 			if( ZmqSocket.Context == IntPtr.Zero ) throw new InvalidOperationException( "Context has not been created" );
 
