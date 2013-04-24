@@ -1,16 +1,14 @@
 ﻿namespace ZeroMQ
 {
 	using System;
-	using System.Collections.Concurrent;
 	using System.Collections.Generic;
+
+	using SubscriberDictionary = System.Collections.Concurrent.ConcurrentDictionary<System.Byte[], System.IObserver<System.Collections.Generic.IEnumerable<System.Byte[]>>>;
 
 	public abstract partial class ZmqSocket: IObservable<IEnumerable<Byte[]>>
 	{
-		protected readonly ConcurrentDictionary<Byte[], IObserver<IEnumerable<Byte[]>>> Subscribers
-			= new ConcurrentDictionary<Byte[], IObserver<IEnumerable<Byte[]>>>();
+		internal readonly SubscriberDictionary Subscribers = new SubscriberDictionary();
 
-		/// <summary></summary>
-		/// <returns></returns>
 		public IDisposable Subscribe( IObserver<IEnumerable<Byte[]>> observer )
 		{
 			Byte[] id;

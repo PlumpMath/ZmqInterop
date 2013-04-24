@@ -44,6 +44,27 @@ namespace ZeroMQ
 		/*  0MQ errors.                                                               */
 		/******************************************************************************/
 
+		/// <summary>"Invalid argument"</summary>
+		public static readonly Int32 EINVAL = 22;
+
+		/// <summary>"No such device"</summary>
+		public static readonly Int32 ENODEV = 19;
+
+		/// <summary>"Bad address"</summary>
+		public static readonly Int32 EFAULT = 14;
+
+		/// <summary>"Interrupted function call"</summary>
+		public static readonly Int32 EINTR = 4;
+
+		/// <summary>"Not enough space"</summary>
+		public static readonly Int32 ENOMEM = 12;
+
+		/// <summary>"Resource temporarily unavailable"</summary>
+		public static readonly Int32 EAGAIN = 11;
+
+		/// <summary>"Too many open files"</summary>
+		public static readonly Int32 EMFILE = 24;
+
 		/// <summary>Avoid collision of errno on platforms that don't have certain values defined</summary>
 		private static readonly Int32 ZMQ_HAUSNUMERO = 156384712;
 
@@ -272,32 +293,32 @@ namespace ZeroMQ
 		/// <summary>Exclusive Pair socket, used to connect a peer to precisely one other peer.</summary>
 		/// <remarks>This pattern is meant to be used for inter-thread communication across the inproc
 		/// transport and does not implement functionality such as auto-reconnection</remarks>
-		public static readonly Int32 ZMQ_PAIR = 0;
+		public const Int32 ZMQ_PAIR = 0;
 
 		/// <summary>Publish socket, used for one-to-many distribution of data from a single
 		/// publisher to multiple Subscribe or Extended Subscribe sockets in a fan out fashion to all
 		/// connected peers</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_SUB" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_XSUB" />
-		public static readonly Int32 ZMQ_PUB = 1;
+		public const Int32 ZMQ_PUB = 1;
 
 		/// <summary>Subscribe socket, used to subscribe to data distributed by a publisher or
 		/// an Extended Publish socket</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_PUB" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_XPUB" />
-		public static readonly Int32 ZMQ_SUB = 2;
+		public const Int32 ZMQ_SUB = 2;
 
 		/// <summary>Request socket, used for sending requests to one or more Reply or Router sockets,
 		/// and for receiving subsequent replies the request that was sent</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_REP" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_ROUTER" />
-		public static readonly Int32 ZMQ_REQ = 3;
+		public const Int32 ZMQ_REQ = 3;
 
 		/// <summary>Reply socket, used to receive requests from and send replies to a Request or
 		/// a Dealer socket</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_REQ" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_DEALER" />
-		public static readonly Int32 ZMQ_REP = 4;
+		public const Int32 ZMQ_REP = 4;
 
 		/// <summary>Dealer socket, used to receive replies, consume their routing information,
 		/// and them forward the replies along to the next hop in their return path</summary>
@@ -305,7 +326,7 @@ namespace ZeroMQ
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_REP" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_ROUTER" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_DEALER" />
-		public static readonly Int32 ZMQ_DEALER = 5;
+		public const Int32 ZMQ_DEALER = 5;
 
 		/// <summary>Router socket, used to receive requests, prepend routing information to them,
 		/// and then forward the requests along to Reply or Dealer sockets</summary>
@@ -313,140 +334,140 @@ namespace ZeroMQ
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_REQ" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_DEALER" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_ROUTER" />
-		public static readonly Int32 ZMQ_ROUTER = 6;
+		public const Int32 ZMQ_ROUTER = 6;
 
 		/// <summary>Pull socket, used to receive unidirectional messages from upstream Push sockets</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_PUSH" />
-		public static readonly Int32 ZMQ_PULL = 7;
+		public const Int32 ZMQ_PULL = 7;
 
 		/// <summary>Push socket, used to send unidirectional messages to downstream Pull sockets</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_PULL" />
-		public static readonly Int32 ZMQ_PUSH = 8;
+		public const Int32 ZMQ_PUSH = 8;
 
 		/// <summary>Extended Publish socket, used like a regular Publish socket, except raw SUBSCRIBE and
 		/// UNSUBSCRIBE messages can also be read from the socket, optionally allowing them to be forwarded
 		/// along to other [Extended] Subscribe sockets</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_SUB" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_XSUB" />
-		public static readonly Int32 ZMQ_XPUB = 9;
+		public const Int32 ZMQ_XPUB = 9;
 
 		/// <summary>Extended Subscribe socket, used like a regular Subscribe socket, except raw SUBSCRIBE and
 		/// UNSUBSCRIBE messages can also be sent to the socket, optionally allowing them to be forwarded
 		/// along to other [Extended] Publish sockets</summary>
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_PUB" />
 		/// <seealso cref="ZeroMQ.Interop.ZMQ_XPUB" />
-		public static readonly Int32 ZMQ_XSUB = 10;
+		public const Int32 ZMQ_XSUB = 10;
 
 		/*  Socket options.  */
 
 		/// <summary>I/O thread affinity (get, set)</summary>
-		public static readonly Int32 ZMQ_AFFINITY = 4;
+		public const Int32 ZMQ_AFFINITY = 4;
 
 		/// <summary>Socket "identity", the opaque binary string uniquely identifying a socket within a network (get, set)</summary>
-		public static readonly Int32 ZMQ_IDENTITY = 5;
+		public const Int32 ZMQ_IDENTITY = 5;
 
 		/// <summary>Only receive messages with a certain "topic" (set)</summary>
-		public static readonly Int32 ZMQ_SUBSCRIBE = 6;
+		public const Int32 ZMQ_SUBSCRIBE = 6;
 
 		/// <summary>Stop receiving messages with a certain "topic" (set)</summary>
-		public static readonly Int32 ZMQ_UNSUBSCRIBE = 7;
+		public const Int32 ZMQ_UNSUBSCRIBE = 7;
 
 		/// <summary>Multicast data rate (get, set)</summary>
-		public static readonly Int32 ZMQ_RATE = 8;
+		public const Int32 ZMQ_RATE = 8;
 
 		/// <summary>Multicast recovery interval (get, set)</summary>
-		public static readonly Int32 ZMQ_RECOVERY_IVL = 9;
+		public const Int32 ZMQ_RECOVERY_IVL = 9;
 
 		/// <summary>Kernel transmit buffer size (get, set)</summary>
-		public static readonly Int32 ZMQ_SNDBUF = 11;
+		public const Int32 ZMQ_SNDBUF = 11;
 
 		/// <summary>Kernel receive buffer size (get, set)</summary>
-		public static readonly Int32 ZMQ_RCVBUF = 12;
+		public const Int32 ZMQ_RCVBUF = 12;
 
 		/// <summary>More message data parts to follow (get)</summary>
-		public static readonly Int32 ZMQ_RCVMORE = 13;
+		public const Int32 ZMQ_RCVMORE = 13;
 
 		/// <summary>File descriptor associated with the socket (get)</summary>
-		public static readonly Int32 ZMQ_FD = 14;
+		public const Int32 ZMQ_FD = 14;
 
 		/// <summary>Socket event state (get)</summary>
-		public static readonly Int32 ZMQ_EVENTS = 15;
+		public const Int32 ZMQ_EVENTS = 15;
 
 		/// <summary>Socket type (get)</summary>
-		public static readonly Int32 ZMQ_TYPE = 16;
+		public const Int32 ZMQ_TYPE = 16;
 
 		/// <summary>Linger period for socket shutdown (get, set)</summary>
-		public static readonly Int32 ZMQ_LINGER = 17;
+		public const Int32 ZMQ_LINGER = 17;
 
 		/// <summary>Initial reconnection interval in milliseconds (get, set)</summary>
-		public static readonly Int32 ZMQ_RECONNECT_IVL = 18;
+		public const Int32 ZMQ_RECONNECT_IVL = 18;
 
 		/// <summary>Maximum length of the queue of outstanding connections (get, set)</summary>
-		public static readonly Int32 ZMQ_BACKLOG = 19;
+		public const Int32 ZMQ_BACKLOG = 19;
 
 		/// <summary>Maximum reconnection interval in milliseconds (get, set)</summary>
-		public static readonly Int32 ZMQ_RECONNECT_IVL_MAX = 21;
+		public const Int32 ZMQ_RECONNECT_IVL_MAX = 21;
 
 		/// <summary>Maximum acceptable inbound message size (get, set)</summary>
-		public static readonly Int32 ZMQ_MAXMSGSIZE = 22;
+		public const Int32 ZMQ_MAXMSGSIZE = 22;
 
 		/// <summary>High water mark for outgoing messages (get, set)</summary>
-		public static readonly Int32 ZMQ_SNDHWM = 23;
+		public const Int32 ZMQ_SNDHWM = 23;
 
 		/// <summary>High water mark for incoming messages (get, set)</summary>
-		public static readonly Int32 ZMQ_RCVHWM = 24;
+		public const Int32 ZMQ_RCVHWM = 24;
 
 		/// <summary>Maximum network hops for multicast packets (get, set)</summary>
-		public static readonly Int32 ZMQ_MULTICAST_HOPS = 25;
+		public const Int32 ZMQ_MULTICAST_HOPS = 25;
 
 		/// <summary>Maximum time before a recv operation returns with EAGAIN (get, set)</summary>
-		public static readonly Int32 ZMQ_RCVTIMEO = 27;
+		public const Int32 ZMQ_RCVTIMEO = 27;
 
 		/// <summary>Maximum time before a send operation returns with EAGAIN (get, set)</summary>
-		public static readonly Int32 ZMQ_SNDTIMEO = 28;
+		public const Int32 ZMQ_SNDTIMEO = 28;
 
 		/// <summary>Use IPv4-only sockets (get, set)</summary>
-		public static readonly Int32 ZMQ_IPV4ONLY = 31;
+		public const Int32 ZMQ_IPV4ONLY = 31;
 
 		/// <summary>The last endpoint bound to the socket (get)</summary>
-		public static readonly Int32 ZMQ_LAST_ENDPOINT = 32;
+		public const Int32 ZMQ_LAST_ENDPOINT = 32;
 
 		/// <summary>Accept only routable messages on ROUTER sockets (set)</summary>
-		public static readonly Int32 ZMQ_ROUTER_MANDATORY = 33;
+		public const Int32 ZMQ_ROUTER_MANDATORY = 33;
 
 		/// <summary>Override SO_KEEPALIVE socket option (get, set)</summary>
-		public static readonly Int32 ZMQ_TCP_KEEPALIVE = 34;
+		public const Int32 ZMQ_TCP_KEEPALIVE = 34;
 
 		/// <summary>Override TCP_KEEPCNT socket option (get, set)</summary>
-		public static readonly Int32 ZMQ_TCP_KEEPALIVE_CNT = 35;
+		public const Int32 ZMQ_TCP_KEEPALIVE_CNT = 35;
 
 		/// <summary>Override TCP_KEEPCNT or TCP_KEEPALIVE socket option (get, set)</summary>
-		public static readonly Int32 ZMQ_TCP_KEEPALIVE_IDLE = 36;
+		public const Int32 ZMQ_TCP_KEEPALIVE_IDLE = 36;
 
 		/// <summary>Override TCP_KEEPINTVL socket option (get, set)</summary>
-		public static readonly Int32 ZMQ_TCP_KEEPALIVE_INTVL = 37;
+		public const Int32 ZMQ_TCP_KEEPALIVE_INTVL = 37;
 
 		/// <summary>Filter a specific CIDR network from establishing new TCP connections (set)</summary>
-		public static readonly Int32 ZMQ_TCP_ACCEPT_FILTER = 38;
+		public const Int32 ZMQ_TCP_ACCEPT_FILTER = 38;
 
 		/// <summary>Accept messages only when connections are made, to prevent queues from filling while awaiting connection (get, set)</summary>
-		public static readonly Int32 ZMQ_DELAY_ATTACH_ON_CONNECT = 39;
+		public const Int32 ZMQ_DELAY_ATTACH_ON_CONNECT = 39;
 
 		/// <summary>Provide all subscription messages on XPUB sockets (set)</summary>
-		public static readonly Int32 ZMQ_XPUB_VERBOSE = 40;
+		public const Int32 ZMQ_XPUB_VERBOSE = 40;
 
 		/*  Message options  */
 
 		/// <summary>Specifies that a message is a multi-part message</summary>
-		public static readonly Int32 ZMQ_MORE = 1;
+		public const Int32 ZMQ_MORE = 1;
 
 		/*  Send/recv options.  */
 
 		/// <summary>Perform socket operations in non-blocking mode</summary>
-		public static readonly Int32 ZMQ_DONTWAIT = 1;
+		public const Int32 ZMQ_DONTWAIT = 1;
 
 		/// <summary>Indicates that the message is a multi-part message</summary>
-		public static readonly Int32 ZMQ_SNDMORE = 2;
+		public const Int32 ZMQ_SNDMORE = 2;
 
 		/******************************************************************************/
 		/*  0MQ socket events and monitoring                                          */
@@ -455,37 +476,37 @@ namespace ZeroMQ
 		/*  Socket transport events (tcp and ipc only)  */
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_CONNECTED = 1;
+		public const Int32 ZMQ_EVENT_CONNECTED = 1;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_CONNECT_DELAYED = 2;
+		public const Int32 ZMQ_EVENT_CONNECT_DELAYED = 2;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_CONNECT_RETRIED = 4;
+		public const Int32 ZMQ_EVENT_CONNECT_RETRIED = 4;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_LISTENING = 8;
+		public const Int32 ZMQ_EVENT_LISTENING = 8;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_BIND_FAILED = 16;
+		public const Int32 ZMQ_EVENT_BIND_FAILED = 16;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_ACCEPTED = 32;
+		public const Int32 ZMQ_EVENT_ACCEPTED = 32;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_ACCEPT_FAILED = 64;
+		public const Int32 ZMQ_EVENT_ACCEPT_FAILED = 64;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_CLOSED = 128;
+		public const Int32 ZMQ_EVENT_CLOSED = 128;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_CLOSE_FAILED = 256;
+		public const Int32 ZMQ_EVENT_CLOSE_FAILED = 256;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_DISCONNECTED = 512;
+		public const Int32 ZMQ_EVENT_DISCONNECTED = 512;
 
 		/// <summary></summary>
-		public static readonly Int32 ZMQ_EVENT_ALL =
+		public const Int32 ZMQ_EVENT_ALL =
 			( ZMQ_EVENT_CONNECTED | ZMQ_EVENT_CONNECT_DELAYED | ZMQ_EVENT_CONNECT_RETRIED | ZMQ_EVENT_LISTENING |
 			  ZMQ_EVENT_BIND_FAILED | ZMQ_EVENT_ACCEPTED | ZMQ_EVENT_ACCEPT_FAILED | ZMQ_EVENT_CLOSED |
 			  ZMQ_EVENT_CLOSE_FAILED | ZMQ_EVENT_DISCONNECTED );
@@ -553,13 +574,13 @@ namespace ZeroMQ
 		public static extern Int32 zmq_socket_monitor( IntPtr socket, String addr, Int32 events );
 
 		/// <summary>Poll a socket for the ability to receive data</summary>
-		public static readonly Int32 ZMQ_POLLIN = 1;
+		public const Int32 ZMQ_POLLIN = 1;
 
 		/// <summary>Poll a socket for the ability to send data</summary>
-		public static readonly Int32 ZMQ_POLLOUT = 2;
+		public const Int32 ZMQ_POLLOUT = 2;
 
 		/// <summary>Poll a socket for an error condition</summary>
-		public static readonly Int32 ZMQ_POLLERR = 4;
+		public const Int32 ZMQ_POLLERR = 4;
 
 		/// <summary>ZeroMQ poll items structure</summary>
 		[StructLayout( LayoutKind.Sequential )]
