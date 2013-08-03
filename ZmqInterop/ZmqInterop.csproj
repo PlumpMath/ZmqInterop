@@ -106,7 +106,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="None.None.Increment.YearDayOfYear" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.YearDayOfYear" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
